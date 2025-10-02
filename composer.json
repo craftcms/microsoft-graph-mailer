@@ -1,0 +1,64 @@
+{
+  "name": "craftcms/microsoft-graph-mailer",
+  "description": "Microsoft Graph Mailer adapter for Craft CMS",
+  "type": "craft-plugin",
+  "keywords": [
+    "cms",
+    "craftcms",
+    "microsoft graph",
+    "microsoft 365",
+    "mailer",
+    "yii2"
+  ],
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Pixel & Tonic",
+      "homepage": "https://pixelandtonic.com/"
+    }
+  ],
+  "support": {
+    "email": "support@craftcms.com",
+    "issues": "https://github.com/craftcms/microsoft-graph-mailer/issues?state=open",
+    "source": "https://github.com/craftcms/microsoft-graph-mailer",
+    "docs": "https://github.com/craftcms/microsoft-graph-mailer",
+    "rss": "https://github.com/craftcms/microsoft-graph-mailer/releases.atom"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.8.0",
+    "symfony/mailer": "7.4.x-dev as 7.3.4",
+    "symfony/microsoft-graph-mailer": "7.4.*"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "craft\\microsoftgraphmailer\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "microsoft-graph-mailer",
+    "name": "Microsoft Graph Mailer",
+    "documentationUrl": "https://github.com/craftcms/microsoft-graph-mailer"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}

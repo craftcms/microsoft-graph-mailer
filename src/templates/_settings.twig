@@ -1,0 +1,75 @@
+{# @var plugin \craft\microsoftgraphmailer\Plugin #}
+{# @var settings \craft\microsoftgraphmailer\models\Settings #}
+
+{% import '_includes/forms.twig' as forms %}
+
+{{ forms.autosuggestField({
+    required: true,
+    label: "Client ID"|t('microsoft-graph-mailer'),
+    instructions: "The client app id used to send emails."|t('microsoft-graph-mailer'),
+    id: 'clientId',
+    name: 'clientId',
+    suggestEnvVars: true,
+    value: adapter.clientId,
+    errors: adapter.getErrors('clientId')
+}) }}
+
+{{ forms.autosuggestField({
+    required: true,
+    label: "Client Secret"|t('microsoft-graph-mailer'),
+    instructions: "The client app secret."|t('microsoft-graph-mailer'),
+    id: 'clientSecret',
+    name: 'clientSecret',
+    suggestEnvVars: true,
+    value: adapter.clientSecret,
+    errors: adapter.getErrors('clientSecret')
+}) }}
+
+{{ forms.autosuggestField({
+    required: true,
+    label: "Tenant ID"|t('microsoft-graph-mailer'),
+    instructions: "The tenant ID."|t('microsoft-graph-mailer'),
+    id: 'tenantId',
+    name: 'tenantId',
+    suggestEnvVars: true,
+    value: adapter.tenantId,
+    errors: adapter.getErrors('tenantId')
+}) }}
+
+{{ forms.autosuggestField({
+    required: false,
+    label: "Graph Endpoint"|t('microsoft-graph-mailer'),
+    instructions: "The Graph Endpoint URL, if different from the [default]({link}) global service one. Without the protocol."|t('microsoft-graph-mailer', {
+        link: "https://learn.microsoft.com/en-us/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints",
+    }),
+    id: 'graphEndpoint',
+    name: 'graphEndpoint',
+    suggestEnvVars: true,
+    value: adapter.graphEndpoint,
+    errors: adapter.getErrors('graphEndpoint'),
+    placeholder: 'graph.microsoft.com',
+}) }}
+
+{{ forms.autosuggestField({
+    required: false,
+    label: "Auth Endpoint"|t('microsoft-graph-mailer'),
+    instructions: "The Auth Endpoint URL, if different from the [default]({link}) global service one. Without the protocol."|t('microsoft-graph-mailer', {
+        link: "https://learn.microsoft.com/en-us/graph/deployments#app-registration-and-token-service-root-endpoints",
+    }),
+    id: 'authEndpoint',
+    name: 'authEndpoint',
+    suggestEnvVars: true,
+    value: adapter.authEndpoint,
+    errors: adapter.getErrors('authEndpoint'),
+    placeholder: 'login.microsoftonline.com',
+}) }}
+
+{{ forms.lightswitchField({
+    required: false,
+    label: "Save to sent items"|t('microsoft-graph-mailer'),
+    instructions: "Whether to save the messages to sent items."|t('microsoft-graph-mailer'),
+    id: 'save',
+    name: 'save',
+    on: adapter.save,
+    errors: adapter.getErrors('save')
+}) }}
