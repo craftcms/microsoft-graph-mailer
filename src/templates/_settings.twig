@@ -39,13 +39,13 @@
 {{ forms.autosuggestField({
     required: false,
     label: "Graph Endpoint"|t('microsoft-graph-mailer'),
-    instructions: "The Graph Endpoint URL, if different from the [default]({link}) global service one. Without the protocol."|t('microsoft-graph-mailer', {
+    instructions: "The Graph Endpoint host. Defaults to the [global service]({link}) one (without the protocol)."|t('microsoft-graph-mailer', {
         link: "https://learn.microsoft.com/en-us/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints",
     }),
     id: 'graphEndpoint',
     name: 'graphEndpoint',
     suggestEnvVars: true,
-    value: adapter.graphEndpoint,
+    value: adapter.graphEndpoint ?? 'graph.microsoft.com',
     errors: adapter.getErrors('graphEndpoint'),
     placeholder: 'graph.microsoft.com',
 }) }}
@@ -53,13 +53,13 @@
 {{ forms.autosuggestField({
     required: false,
     label: "Auth Endpoint"|t('microsoft-graph-mailer'),
-    instructions: "The Auth Endpoint URL, if different from the [default]({link}) global service one. Without the protocol."|t('microsoft-graph-mailer', {
+    instructions: "The Auth Endpoint host. Defaults to the [global service]({link}) one (without the protocol)."|t('microsoft-graph-mailer', {
         link: "https://learn.microsoft.com/en-us/graph/deployments#app-registration-and-token-service-root-endpoints",
     }),
     id: 'authEndpoint',
     name: 'authEndpoint',
     suggestEnvVars: true,
-    value: adapter.authEndpoint,
+    value: adapter.authEndpoint ?? 'login.microsoftonline.com',
     errors: adapter.getErrors('authEndpoint'),
     placeholder: 'login.microsoftonline.com',
 }) }}
