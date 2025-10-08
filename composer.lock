@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecadc2a2aca5e94d090d6bae0e056078",
+    "content-hash": "3f0250ba90afadd579a2c5bb919d7b1e",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -327,16 +327,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "5.8.17",
+            "version": "5.8.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "afad55fb5c220b2e25a9ea6bf5e5c324eb44bc53"
+                "reference": "ff394ccb9e70c83f16f47ea159ab2331b5e05084"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/afad55fb5c220b2e25a9ea6bf5e5c324eb44bc53",
-                "reference": "afad55fb5c220b2e25a9ea6bf5e5c324eb44bc53",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/ff394ccb9e70c83f16f47ea159ab2331b5e05084",
+                "reference": "ff394ccb9e70c83f16f47ea159ab2331b5e05084",
                 "shasum": ""
             },
             "require": {
@@ -450,7 +450,7 @@
                 "rss": "https://github.com/craftcms/cms/releases.atom",
                 "source": "https://github.com/craftcms/cms"
             },
-            "time": "2025-09-05T23:56:04+00:00"
+            "time": "2025-10-06T18:25:26+00:00"
         },
         {
             "name": "craftcms/plugin-installer",
@@ -4248,12 +4248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "bee1739939a671e9503f717efa68f6afa11087df"
+                "reference": "367480d68b6a0272e2ed9f7be641941b9b783f78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/bee1739939a671e9503f717efa68f6afa11087df",
-                "reference": "bee1739939a671e9503f717efa68f6afa11087df",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/367480d68b6a0272e2ed9f7be641941b9b783f78",
+                "reference": "367480d68b6a0272e2ed9f7be641941b9b783f78",
                 "shasum": ""
             },
             "require": {
@@ -4324,7 +4324,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-18T08:45:38+00:00"
+            "time": "2025-10-06T14:44:54+00:00"
         },
         {
             "name": "symfony/microsoft-graph-mailer",
@@ -7940,17 +7940,9 @@
             "time": "2022-06-13T14:03:37+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "symfony/mailer",
-            "version": "7.4.9999999.9999999-dev",
-            "alias": "7.3.4",
-            "alias_normalized": "7.3.4.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/mailer": 20,
         "craftcms/ecs": 20,
         "craftcms/phpstan": 20
     },

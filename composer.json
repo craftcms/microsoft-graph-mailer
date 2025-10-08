@@ -29,8 +29,8 @@
   "require": {
     "php": ">=8.2",
     "craftcms/cms": "^5.8.0",
-    "symfony/mailer": "7.4.x-dev as 7.3.4",
-    "symfony/microsoft-graph-mailer": "7.4.*"
+    "symfony/mailer": "^7.4",
+    "symfony/microsoft-graph-mailer": "^7.4"
   },
   "require-dev": {
     "craftcms/ecs": "dev-main",
