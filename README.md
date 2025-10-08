@@ -46,15 +46,15 @@ composer require craftcms/microsoft-graph-mailer
 ### 2. Create credentials
 - Next to "Client credentials" click the "Add a certificate or secret".
   - Under "Client secrets", click "+ New client secret"; give it a description and choose preferred expiration timeframe; click "Add".
-  - Important: make a note of the secret's Value - you won't be able to retrieve it if you leave or reload the page.
+  - **Important:** make a note of the secret's Value - you won't be able to retrieve it if you leave or reload the page.
 - You'll need the "Application (client) ID", "Directory (tenant) ID" and the secret "Value" to configure the plugin in Craft CMS.
 
 ### 3. Grant permissions
-- In your app (Manage > App registrations > <your app>), go to "Manage" > "API permissions" and select "+ Add a permission".
+- In your app (Manage > App registrations > _your app_), go to "Manage" > "API permissions" and select "+ Add a permission".
 - Under "Microsoft APIs", select "Microsoft Graph".
 - Select "Application permissions" (not Delegated); Find "Mail" > "Mail.Send" and select a checkbox next to it.
-- Click "Add permissions" - the permission will show in the table with a status of "Not granted for <your organization name>".
-- Click the "✓ Grant admin consent for <your organization name>" - the permission should now show in the table with a status of "Granted for <your organization name>".
+- Click "Add permissions" - the permission will show in the table with a status of "Not granted for _your organization name_".
+- Click the "✓ Grant admin consent for _your organization name_" - the permission should now show in the table with a status of "Granted for _your organization name_".
 
 ## Plugin Setup
 
