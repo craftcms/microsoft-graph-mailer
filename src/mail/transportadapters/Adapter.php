@@ -106,8 +106,7 @@ class Adapter extends BaseTransportAdapter
     {
         return [
             [['clientId', 'clientSecret', 'tenantId'], 'required'],
-            [['clientId', 'clientSecret', 'tenantId'], 'string'],
-            [['graphEndpoint', 'authEndpoint'], 'url', 'defaultScheme' => 'https'],
+            [['clientId', 'clientSecret', 'tenantId', 'graphEndpoint', 'authEndpoint'], 'string'],
             [['save'], 'boolean'],
         ];
     }
@@ -136,7 +135,7 @@ class Adapter extends BaseTransportAdapter
             new CurlHttpClient(),
         );
 
-        return new MicrosoftGraphApiTransport($this->graphEndpoint, $tokenManager, $this->save);
+        return new MicrosoftGraphApiTransport($this->graphEndpoint, $tokenManager, !$this->save);
     }
 
     private function getGraphEndpoint(): string
