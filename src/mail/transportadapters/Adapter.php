@@ -135,7 +135,7 @@ class Adapter extends BaseTransportAdapter
             new CurlHttpClient(),
         );
 
-        return new MicrosoftGraphApiTransport($this->graphEndpoint, $tokenManager, !$this->save);
+        return new MicrosoftGraphApiTransport($this->getGraphEndpoint(), $tokenManager, !$this->save);
     }
 
     private function getGraphEndpoint(): string
