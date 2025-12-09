@@ -38,23 +38,26 @@ composer require craftcms/microsoft-graph-mailer
 - Navigate to Azure Active Directory (Entra).
 
 ### 1. Create the app
-- Go to "Manage" > "App registrations" and select "+ New registration".
-  - Give your app a "Name".
-  - Under "Supported account types", choose "Accounts in this organizational directory only (Single tenant)".
-  - Click "Register" - the app will be created, and you'll be taken to its overview page.
+- Go to **Manage** → **App registrations** and press **New registration**.
+- Give your app a **Name**.
+- Under **Supported account types**, select **Accounts in this organizational directory only (Single tenant)**.
+- Press **Register**. The app will be created, and you’ll be taken to its overview page.
 
 ### 2. Create credentials
-- Next to "Client credentials" click the "Add a certificate or secret".
-  - Under "Client secrets", click "+ New client secret"; give it a description and choose preferred expiration timeframe; click "Add".
-  - **Important:** make a note of the secret's Value - you won't be able to retrieve it if you leave or reload the page.
-- You'll need the "Application (client) ID", "Directory (tenant) ID" and the secret "Value" to configure the plugin in Craft CMS.
+- Beside **Client credentials**, press **Add a certificate or secret**.
+- Under **Client secrets**, press **New client secret**. Give it a description and preferred expiration timeframe, then press **Add**.
+- Copy the **Application (client) ID**, **Directory (tenant) ID**, and the secret **Value** somewhere safe. You’ll need these values to configure the Craft CMS mailer.
+
+> [!NOTE]
+> It won’t be possible to re-retrieve the secret’s value once you’ve left the page.
 
 ### 3. Grant permissions
-- In your app (Manage > App registrations > _your app_), go to "Manage" > "API permissions" and select "+ Add a permission".
-- Under "Microsoft APIs", select "Microsoft Graph".
-- Select "Application permissions" (not Delegated); Find "Mail" > "Mail.Send" and select a checkbox next to it.
-- Click "Add permissions" - the permission will show in the table with a status of "Not granted for _your organization name_".
-- Click the "✓ Grant admin consent for _your organization name_" - the permission should now show in the table with a status of "Granted for _your organization name_".
+- Go to **Manage** → **App registrations** → _[your app]_ → **Manage** → **API permissions** and press **Add a permission**.
+- Under **Microsoft APIs**, select **Microsoft Graph**.
+- Select **Application permissions** (not Delegated).
+- Select the checkbox for **Mail** → **Mail.Send**.
+- Press **Add permissions**. The permission will show in the table with a status of “Not granted for _[your organization name]_”.
+- Press **Grant admin consent for _[your organization name]_**. The permission should now show in the table with a status of “Granted for _[your organization name]_”.
 
 ## Plugin Setup
 
@@ -68,4 +71,3 @@ Once Microsoft Graph Mailer is installed:
 6. If you need to use graph and auth endpoints other than the default, you can fill out **Graph Endpoint** and **Auth Endpoint** fields.
 7. If you want to save the messages to sent items, toggle **Save to sent items** on.
 8. Click **Save**.
-
