@@ -35,7 +35,7 @@ composer require craftcms/microsoft-graph-mailer
 
 ## Microsoft Setup
 - Log in to your [Azure Portal account](https://portal.azure.com).
-- Navigate to Azure Active Directory (Entra).
+- Navigate to **Azure Active Directory (Entra)**.
 
 ### 1. Create the app
 - Go to **Manage** → **App registrations** and press **New registration**.
@@ -52,7 +52,7 @@ composer require craftcms/microsoft-graph-mailer
 > It won’t be possible to re-retrieve the secret’s value once you’ve left the page.
 
 ### 3. Grant permissions
-- Go to **Manage** → **App registrations** → _[your app]_ → **Manage** → **API permissions** and press **Add a permission**.
+- Go to **Manage** → **App registrations** → **_[your app]_** → **Manage** → **API permissions** and press **Add a permission**.
 - Under **Microsoft APIs**, select **Microsoft Graph**.
 - Select **Application permissions** (not Delegated).
 - Select the checkbox for **Mail** → **Mail.Send**.
