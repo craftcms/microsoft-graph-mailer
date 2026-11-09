@@ -6,7 +6,7 @@ This plugin provides a [Microsoft Graph](https://learn.microsoft.com/en-us/graph
 
 ## Requirements
 
-This plugin requires Craft CMS 5.8.0 or later, or 6.0.0-alpha.1 or later with the `craftcms/yii2-adapter` package, and PHP 8.2 or later.
+This plugin requires Craft CMS 5.8.0 or later, or 6.0.0-beta.1 or later with the `craftcms/yii2-adapter` package, and PHP 8.2 or later.
 
 ## Installation
 
