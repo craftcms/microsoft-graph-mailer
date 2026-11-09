@@ -6,7 +6,7 @@ This plugin provides a [Microsoft Graph](https://learn.microsoft.com/en-us/graph
 
 ## Requirements
 
-This plugin requires Craft CMS 5.8.0 or later, and PHP 8.2 or later.
+This plugin requires Craft CMS 5.8.0 or later, or 6.0.0-alpha.1 or later with the `craftcms/yii2-adapter` package, and PHP 8.2 or later.
 
 ## Installation
 
@@ -73,3 +73,79 @@ Once Microsoft Graph Mailer is installed:
 6. If you need to use graph and auth endpoints other than the default, you can fill out **Graph Endpoint** and **Auth Endpoint** fields.
 7. If you want to save the messages to sent items, toggle **Save to sent items** on.
 8. Click **Save**.
+
+## Craft 6
+
+Craft 6 sends email through [Laravel mailers](https://laravel.com/docs/mail). Laravel doesn’t have a Microsoft Graph driver, but Symfony’s Microsoft Graph transport, which this plugin uses, can be registered as one, so you don’t need this plugin once you’ve done that.
+
+With the `craftcms/yii2-adapter` package installed, Craft keeps sending email through the Microsoft Graph settings in your project config until you configure a Laravel mailer. It uses them as the `craft-transport` mailer, which is the default mailer unless you select a mailer in Settings → Email, set the `MAIL_MAILER` environment variable, or change the default mailer in `config/mail.php`. Craft logs a deprecation warning while it does this.
+
+To send email through Microsoft Graph with a Laravel mailer:
+
+1. Require Symfony’s Microsoft Graph transport and HTTP client. Removing this plugin removes them too, otherwise.
+
+   ```bash
+   composer require symfony/microsoft-graph-mailer symfony/http-client
+   ```
+
+2. Register the `microsoft-graph` transport in `bootstrap/app.php`, before `->create()`:
+
+   ```php
+   use Illuminate\Support\Facades\Mail;
+   use Symfony\Component\HttpClient\HttpClient;
+   use Symfony\Component\Mailer\Bridge\MicrosoftGraph\Transport\MicrosoftGraphTransportFactory;
+   use Symfony\Component\Mailer\Transport\Dsn;
+
+   // ...
+       ->booted(function () {
+           Mail::extend('microsoft-graph', fn (array $config) => new MicrosoftGraphTransportFactory(client: HttpClient::create())->create(new Dsn(
+               'microsoftgraph+api',
+               $config['graph_endpoint'] ?? 'default',
+               $config['client_id'],
+               $config['client_secret'],
+               options: [
+                   'tenantId' => $config['tenant_id'],
+                   'authEndpoint' => $config['auth_endpoint'] ?? null,
+                   'noSave' => !($config['save_to_sent_items'] ?? false),
+               ],
+           )));
+       })
+       ->create();
+   ```
+
+   If your project has a service provider, such as `app/Providers/AppServiceProvider.php`, you can call `Mail::extend()` in its `boot()` method instead.
+
+3. Add a `microsoft-graph` mailer to the `mailers` array in `config/mail.php`:
+
+   ```php
+   'microsoft-graph' => [
+       'transport' => 'microsoft-graph',
+       'client_id' => env('MICROSOFT_GRAPH_CLIENT_ID'),
+       'client_secret' => env('MICROSOFT_GRAPH_CLIENT_SECRET'),
+       'tenant_id' => env('MICROSOFT_GRAPH_TENANT_ID'),
+       'graph_endpoint' => env('MICROSOFT_GRAPH_ENDPOINT', 'default'),
+       'auth_endpoint' => env('MICROSOFT_GRAPH_AUTH_ENDPOINT'),
+       'save_to_sent_items' => env('MICROSOFT_GRAPH_SAVE_TO_SENT_ITEMS', false),
+   ],
+   ```
+
+4. Set the environment variables in `.env`. `MAIL_FROM_ADDRESS` has to be the licensed mailbox you send from, because Craft 6 uses it as the default sender for email that doesn’t have one.
+
+   ```bash
+   MAIL_MAILER=microsoft-graph
+   MAIL_FROM_ADDRESS=mailbox@example.com
+   MICROSOFT_GRAPH_CLIENT_ID=your-client-id
+   MICROSOFT_GRAPH_CLIENT_SECRET=your-client-secret
+   MICROSOFT_GRAPH_TENANT_ID=your-tenant-id
+   ```
+
+   If you set **Graph Endpoint** and **Auth Endpoint** for a national cloud, set both `MICROSOFT_GRAPH_ENDPOINT` and `MICROSOFT_GRAPH_AUTH_ENDPOINT`, as hostnames without `https://`, such as `graph.microsoft.us` and `login.microsoftonline.us`. To keep saving messages to Sent Items, set `MICROSOFT_GRAPH_SAVE_TO_SENT_ITEMS=true`.
+
+5. Send a test email from Settings → Email, or with `php artisan craft:mailer:test`.
+
+Then uninstall the plugin and remove it from your project:
+
+```bash
+php artisan craft:plugin:uninstall microsoft-graph-mailer
+composer remove craftcms/microsoft-graph-mailer
+```

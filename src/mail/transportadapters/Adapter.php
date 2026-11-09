@@ -87,7 +87,7 @@ class Adapter extends BaseTransportAdapter
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'clientId' => Craft::t('microsoft-graph-mailer', 'Client ID'),
