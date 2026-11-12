@@ -80,6 +80,8 @@ Craft 6 sends email through [Laravel mailers](https://laravel.com/docs/mail). La
 
 With the `craftcms/yii2-adapter` package installed, Craft keeps sending email through the Microsoft Graph settings in your project config until you configure a Laravel mailer. It uses them as the `craft-transport` mailer, which is the default mailer unless you select a mailer in Settings → Email, set the `MAIL_MAILER` environment variable, or change the default mailer in `config/mail.php`. Craft logs a deprecation warning while it does this.
 
+To keep sending email through this plugin, set `MAIL_MAILER=craft-transport` in your environment, or select `craft-transport` as the mailer in Settings → Email. If you do neither and `MAIL_MAILER` names another mailer, such as `log`, Craft sends email through that mailer instead.
+
 To send email through Microsoft Graph with a Laravel mailer:
 
 1. Require Symfony’s Microsoft Graph transport and HTTP client. Removing this plugin removes them too, otherwise.

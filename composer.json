@@ -32,12 +32,12 @@
     "symfony/mailer": "^7.4|^8.0",
     "symfony/microsoft-graph-mailer": "^7.4|^8.0"
   },
+  "suggest": {
+    "craftcms/yii2-adapter": "Required to use Microsoft Graph Mailer with Craft CMS 6."
+  },
   "require-dev": {
     "craftcms/ecs": "dev-main",
     "craftcms/phpstan": "dev-main"
-  },
-  "suggest": {
-    "craftcms/yii2-adapter": "Required to use this plugin with Craft CMS 6"
   },
   "autoload": {
     "psr-4": {
